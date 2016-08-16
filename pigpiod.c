@@ -250,18 +250,7 @@ void terminate(int signum)
 
 int main(int argc, char **argv)
 {
-   pid_t pid;
    int flags;
-
-   /* Fork off the parent process */
-
-   pid = fork();
-
-   if (pid < 0) { exit(EXIT_FAILURE); }
-
-   /* If we got a good PID, then we can exit the parent process. */
-
-   if (pid > 0) { exit(EXIT_SUCCESS); }
 
    /* Change the file mode mask */
 
