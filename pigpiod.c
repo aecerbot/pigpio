@@ -259,10 +259,6 @@ int main(int argc, char **argv)
    /* Open any logs here */
 
    /* NONE */
-   
-   /* Create a new SID for the child process */
-
-   if (setsid() < 0) fatal("setsid failed (%m)");
 
    /* Change the current working directory */
 
