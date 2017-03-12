@@ -1,0 +1,8 @@
+version: '2.1'
+services:
+  pigpiod-test:
+    extends:
+      file: ./services.yml
+      service: pigpiod
+    ports:
+      - "8364:8364"

@@ -89,7 +89,7 @@ install:	$(ALL)
 	install -m 0644 *.1               $(DESTDIR)$(mandir)/man1
 	install -m 0755 -d                $(DESTDIR)$(mandir)/man3
 	install -m 0644 *.3               $(DESTDIR)$(mandir)/man3
-	ldconfig
+	ldconfig                          $(DESTDIR)$(libdir)
 
 uninstall:
 	rm -f $(DESTDIR)$(includedir)/pigpio.h

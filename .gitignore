@@ -8,3 +8,5 @@ pigs
 x_pigpio
 x_pigpiod_if
 x_pigpiod_if2
+
+.*sw[op]

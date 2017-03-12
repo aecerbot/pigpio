@@ -1,0 +1,14 @@
+# git
+.git
+.gitignore
+
+# examples
+EXAMPLES
+
+# docker
+docker-compose.yml
+services.yml
+Dockerfile
+
+# editor
+**/*.sw?
