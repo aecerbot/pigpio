@@ -1,9 +1,15 @@
-FROM lawngnome/alpine:3.5
+FROM lawngnome/ubuntu:16.10
 
-# Install the build dependencies for pigpiod
-RUN apk add --update \
-        build-base \
-    && rm -rf /var/cache/apk/*
+# Install the build dependencies: alpine version
+# RUN apk add --update \
+#         build-base \
+#     && rm -rf /var/cache/apk/*
+
+# Install the build dependencies: ubuntu version
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        build-essential \
+    && rm -rf /var/lib/apt/lists/*
 
 # Actually build pigpiod
 ADD . /usr/share/src/pigpio

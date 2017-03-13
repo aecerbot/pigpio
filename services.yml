@@ -1,7 +1,7 @@
 version: '2.1'
 services:
   pigpiod:
-    image: ae/pigpio/pigpiod:latest
+    image: ae/pigpio:latest
     build:
       context: .
       args:

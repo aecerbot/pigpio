@@ -1,8 +1,9 @@
 version: '2.1'
 services:
-  pigpiod-test:
+  pigpiod:
     extends:
       file: ./services.yml
-      service: pigpiod
+      service: pigpio
+    cmd: pigpiod -s 2 -b 200 -p 8364
     ports:
       - "8364:8364"
