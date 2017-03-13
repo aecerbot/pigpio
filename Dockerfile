@@ -5,15 +5,19 @@ FROM lawngnome/ubuntu:16.10
 #         build-base \
 #     && rm -rf /var/cache/apk/*
 
-# Install the build dependencies: ubuntu version
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-        build-essential \
-    && rm -rf /var/lib/apt/lists/*
-
-# Actually build pigpiod
+# add codebase
 ADD . /usr/share/src/pigpio
-RUN make -C /usr/share/src/pigpio -j2 install
+
+# Install dependencies and build: ubuntu version
+RUN buildDeps='build-essential' \
+    && set -x \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends $buildDeps \
+    && rm -rf /var/lib/apt/lists/* \
+    && cd /usr/share/src/pigpio \
+    && make -C /usr/share/src/pigpio -j2 install \
+    && rm -rf /usr/share/src/pigpio \
+    && apt-get purge -y --auto-remove $buildDeps
 
 # Default is to run the daemon
 ARG DEFAULT_LISTEN_PORT
