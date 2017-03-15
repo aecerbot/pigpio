@@ -1,0 +1,10 @@
+prefix=/usr/local
+exec_prefix=${prefix}
+libdir=/usr/local/lib
+includedir=/usr/local/include
+
+Name: pigpio
+Description: Driver library for accessing GPIO ports
+Version: 0.1.0
+Libs: -L${libdir} -lpigpio_if2 -lpigpio_if -lpigpio
+Cflags: -I${includedir}

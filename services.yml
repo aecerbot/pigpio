@@ -1,6 +1,6 @@
 version: '2.1'
 services:
-  pigpiod:
+  pigpio:
     image: ae/pigpio:latest
     build:
       context: .
@@ -8,8 +8,4 @@ services:
         - DEFAULT_LISTEN_PORT=8364
         - DEFAULT_BUFFER_SIZE_MS=200
         - DEFAULT_SAMPLE_INTERVAL_uS=2
-    cap_add:
-      - ALL
-    devices:
-      - /dev/mem
-      - /dev/vcio
+

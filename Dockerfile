@@ -6,7 +6,7 @@ FROM lawngnome/ubuntu:16.10
 #     && rm -rf /var/cache/apk/*
 
 # add codebase
-ADD . /usr/share/src/pigpio
+ADD . /usr/local/src/pigpio
 
 # Install dependencies and build: ubuntu version
 RUN buildDeps='build-essential' \
@@ -14,9 +14,9 @@ RUN buildDeps='build-essential' \
     && apt-get update \
     && apt-get install -y --no-install-recommends $buildDeps \
     && rm -rf /var/lib/apt/lists/* \
-    && cd /usr/share/src/pigpio \
-    && make -C /usr/share/src/pigpio -j2 install \
-    && rm -rf /usr/share/src/pigpio \
+    && cd /usr/local/src/pigpio \
+    && make -C /usr/local/src/pigpio -j2 install \
+    && rm -rf /usr/local/src/pigpio \
     && apt-get purge -y --auto-remove $buildDeps
 
 # Default is to run the daemon

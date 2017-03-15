@@ -33,6 +33,7 @@ bindir = $(exec_prefix)/bin
 includedir = $(prefix)/include
 libdir = $(prefix)/lib
 mandir = $(prefix)/man
+pkgdir = $(prefix)/share/pkgconfig
 
 all:	$(ALL)
 
@@ -89,6 +90,8 @@ install:	$(ALL)
 	install -m 0644 *.1               $(DESTDIR)$(mandir)/man1
 	install -m 0755 -d                $(DESTDIR)$(mandir)/man3
 	install -m 0644 *.3               $(DESTDIR)$(mandir)/man3
+	install -m 0755 -d                $(DESTDIR)$(pkgdir)
+	install -m 0644 pigpio.pc         $(DESTDIR)$(pkgdir)
 	ldconfig                          $(DESTDIR)$(libdir)
 
 uninstall:
@@ -105,6 +108,7 @@ uninstall:
 	if which python3; then python3 setup.py install --record /tmp/pigpio >/dev/null; xargs rm -f < /tmp/pigpio >/dev/null; fi
 	rm -f $(DESTDIR)$(mandir)/man1/pig*.1
 	rm -f $(DESTDIR)$(mandir)/man3/pig*.3
+	rm -f $(DESTDIR)$(pkgdir)/pigpio.pc
 	ldconfig
 
 $(LIB1):	$(OBJ1)

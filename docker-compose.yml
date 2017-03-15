@@ -4,6 +4,16 @@ services:
     extends:
       file: ./services.yml
       service: pigpio
-    cmd: pigpiod -s 2 -b 200 -p 8364
+    command: pigpiod -s 2 -b 200 -p 8364
     ports:
       - "8364:8364"
+    cap_add:
+      - ALL
+    devices:
+      - /dev/mem
+      - /dev/vcio
+
+  pigpio-build:
+    extends:
+      file: ./services.yml
+      service: pigpio
